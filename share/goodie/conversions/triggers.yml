@@ -112,6 +112,8 @@ aliases:
   - dkg
   - dekagram
   - dekagrams
+  - decagram
+  - decagrams
 type: mass
 unit: dekagram
 symbols: [dag, dkg]
@@ -350,6 +352,7 @@ aliases:
   - millimeters
   - milli meter
   - milli meters
+  - mil
   - mm
   - mms
 type: length
@@ -364,6 +367,7 @@ aliases:
   - micro meter
   - micro meters
   - µms
+  - µm
 type: length
 unit: micrometer
 symbols: [µm]
@@ -1636,6 +1640,15 @@ aliases:
   - MiB
 type: digital
 unit: mebibyte
+---
+aliases:
+  - gibibyte
+  - gibibytes
+  - gibi byte
+  - gibi bytes
+  - gib
+type: digital
+unit: gibibyte
 ---
 aliases:
   - tibibyte

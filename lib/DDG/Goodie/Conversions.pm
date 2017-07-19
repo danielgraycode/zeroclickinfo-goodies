@@ -103,9 +103,9 @@ my $guard = qr/^
                 (?<question>$question_prefix)\s?
                 (?<left_num>$factor_re*|\d+\/\d+)\s?(?<left_unit>$keys)
                 (?:\s
-                    (?<connecting_word>in|(?:convert(?:ed)?)?\s?to|vs|is|convert|per|=(?:[\s\?]+)?|in\sto|(?:equals|is)?\show\smany|(?:equals?|make)\sa?|are\sin\sa|(?:is\swhat\sin)|(?:in to)|from)?\s?
+                    (?<connecting_word>in|(?:convert(?:ed)?)?\s?to|vs|is|convert|per|=(?:[\s\?]+)?|in\sto|(?:equals|is)?\show\smany|(?:equals?(?:\swhat(?:\sin)?)?|make)\sa?|\?\s?=|are\sin\sa|(?:is\swhat\sin)|(?:in to)|from)?\s?
                     (?<right_num>$factor_re*|\d+\/\d+)\s?(?:of\s)?(?<right_unit>$keys)\s?
-                    (?:conver(?:sion|ter)|calculator)?[\?]?
+                    (?:conver(?:sion|ter)|calculator|equals(?:\swhat)?)?[\?]?
                 )?
                $
               /ix;
@@ -199,13 +199,16 @@ handle query => sub {
     my $question = $+{'question'} // "";
     my $connecting_word = $+{'connecting_word'} // "";
 
+    p($left_unit);
+    p($right_unit);
+
     my $factor = $left_num;
     my @matches = ($left_unit, $right_unit);
 
     # ignore conversion when both units have a number
     return if ($left_num && $right_num);
     return if (length $left_unit <= 3 && !grep(/^$preserved_query$/, @expanded_triggers) && !grep(/^$left_unit$/, @safe_abbrevs)) && !($left_num || $right_unit);
-
+    
     # Compare factors of both units to ensure proper order when ambiguous
     # also, check the <connecting_word> of regex for possible user intentions
     my @factor1 = (); # conversion factors, not left_num or right_num values
@@ -273,6 +276,7 @@ handle query => sub {
         'from_unit' => $matches[0],
         'to_unit' => $matches[1],
     });
+    p($result);
 
     return unless defined $result->{'from_unit'} && defined $result->{'type'};
 

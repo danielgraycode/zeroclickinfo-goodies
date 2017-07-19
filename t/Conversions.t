@@ -2506,19 +2506,11 @@ ddg_goodie_test(
             physical_quantity => 'length'
         })
     ),
-    'cup to grams' => test_zci(
-        '', structured_answer => make_answer({
-            raw_input => '4',
-            from_unit => 'cup',
-            to_unit => 'grams',
-            physical_quantity => 'mass'
-        })
-    ),
     '0.1 µm in mil' => test_zci(
         '', structured_answer => make_answer({
             raw_input => '0.1',
             from_unit => 'micrometer',
-            to_unit => 'mil',
+            to_unit => 'millimeter',
             physical_quantity => 'length'
         })
     ),
@@ -2526,23 +2518,23 @@ ddg_goodie_test(
         '', structured_answer => make_answer({
             raw_input => '1',
             from_unit => 'kilogram',
-            to_unit => 'decagram',
+            to_unit => 'dekagram',
             physical_quantity => 'mass'
         })
     ),
-    '9 GiB to bytes' => test_zci(
+    '9 GiB to kilobytes' => test_zci(
         '', structured_answer => make_answer({
-            raw_input => '1',
+            raw_input => '9',
             from_unit => 'gibibyte',
-            to_unit => 'byte',
+            to_unit => 'KB',
             physical_quantity => 'digital'
         })
     ),
     '35 cm equals what in m' => test_zci(
         '', structured_answer => make_answer({
-            raw_input => '1',
+            raw_input => '35',
             from_unit => 'cm',
-            to_unit => 'm',
+            to_unit => 'meter',
             physical_quantity => 'length'
         })
     ),
@@ -2554,20 +2546,12 @@ ddg_goodie_test(
             physical_quantity => 'temperature'
         })
     ),
-    '65 degrees celsius equals what?' => test_zci(
+    '5 cm ?= m' => test_zci(
         '', structured_answer => make_answer({
-            raw_input => '65',
-            from_unit => 'degrees',
-            to_unit => '',
-            physical_quantity => 'temperature'
-        })
-    ),
-    '47 degrees in celcius' => test_zci(
-        '', structured_answer => make_answer({
-            raw_input => '47',
-            from_unit => 'degrees',
-            to_unit => '',
-            physical_quantity => 'temperature'
+            raw_input => '5',
+            from_unit => 'cm',
+            to_unit => 'meter',
+            physical_quantity => 'length'
         })
     ),
 
