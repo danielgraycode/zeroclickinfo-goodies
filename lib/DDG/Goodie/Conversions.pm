@@ -155,6 +155,30 @@ sub get_base_information {
     return 'length';
 }
 
+# EXPERIMENTAL
+# If the user is located in the US, we'll show them US type units instead of Imperial
+sub us_locale {
+    my ($unit) = @_;
+
+    my @q_triggers = qw/q quintal/;
+    my @cup_triggers = qw/cup cups/;
+    my @floz_triggers = ('fluid ounce', 'fluid ounces', 'fluid oz', 'fluid ozs', 'floz', 'fl oz', 'fl. oz', 'fl. ozs');
+    my @gallon_triggers = qw/gal gals gallon gallons/;
+    my @quart_triggers = qw/quart quarts qt qts/;
+    my @tbsp_triggers = qw/tbsp tablespoon tablespoon/;
+    my @tsp_triggers = qw/tsp teaspoon tea spoon/;
+
+    $unit = 'usfluidounce' if grep(/^$unit$/, @floz_triggers);
+    $unit = 'usgallon' if grep(/^$unit$/, @gallon_triggers);
+    $unit = 'usquart' if grep(/^$unit$/, @quart_triggers);
+    $unit = 'ustbsp' if grep(/^$unit$/, @tbsp_triggers);
+    $unit = 'uscup' if grep(/^$unit$/, @cup_triggers);
+    $unit = 'ustsp' if grep(/^$unit$/, @tsp_triggers);
+    $unit = 'usquintal' if grep(/^$unit$/, @q_triggers);
+
+    return $unit;
+}
+
 handle query => sub {
 
     # for natural language queries, settle with default template / data
@@ -198,6 +222,10 @@ handle query => sub {
     my $right_num = $+{'right_num'} // "";
     my $question = $+{'question'} // "";
     my $connecting_word = $+{'connecting_word'} // "";
+
+    # If the user is in the US, we'll show them US type units, else default to imperial
+    $left_unit = us_locale($left_unit) if $loc->country_code eq 'US';
+    $right_unit = us_locale($right_unit) if $loc->country_code eq 'US';
 
     my $factor = $left_num;
     my @matches = ($left_unit, $right_unit);

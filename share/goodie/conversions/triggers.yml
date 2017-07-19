@@ -166,6 +166,7 @@ symbols: [st]
 aliases:
   - metric quintal
   - metric quintals
+  - quintal
   - q
 type: mass
 unit: metricquintal
