@@ -2498,6 +2498,78 @@ ddg_goodie_test(
             physical_quantity => 'data_transfer'
         })
     ),
+    '4" to cms' => test_zci(
+        '', structured_answer => make_answer({
+            raw_input => '4',
+            from_unit => 'inch',
+            to_unit => 'cm',
+            physical_quantity => 'length'
+        })
+    ),
+    'cup to grams' => test_zci(
+        '', structured_answer => make_answer({
+            raw_input => '4',
+            from_unit => 'cup',
+            to_unit => 'grams',
+            physical_quantity => 'mass'
+        })
+    ),
+    '0.1 µm in mil' => test_zci(
+        '', structured_answer => make_answer({
+            raw_input => '0.1',
+            from_unit => 'micrometer',
+            to_unit => 'mil',
+            physical_quantity => 'length'
+        })
+    ),
+    '1 kilogram = ? decagram' => test_zci(
+        '', structured_answer => make_answer({
+            raw_input => '1',
+            from_unit => 'kilogram',
+            to_unit => 'decagram',
+            physical_quantity => 'mass'
+        })
+    ),
+    '9 GiB to bytes' => test_zci(
+        '', structured_answer => make_answer({
+            raw_input => '1',
+            from_unit => 'gibibyte',
+            to_unit => 'byte',
+            physical_quantity => 'digital'
+        })
+    ),
+    '35 cm equals what in m' => test_zci(
+        '', structured_answer => make_answer({
+            raw_input => '1',
+            from_unit => 'cm',
+            to_unit => 'm',
+            physical_quantity => 'length'
+        })
+    ),
+    '450 degrees to celsius' => test_zci(
+        '', structured_answer => make_answer({
+            raw_input => '450',
+            from_unit => 'farenheight',
+            to_unit => 'celsius',
+            physical_quantity => 'temperature'
+        })
+    ),
+    '65 degrees celsius equals what?' => test_zci(
+        '', structured_answer => make_answer({
+            raw_input => '65',
+            from_unit => 'degrees',
+            to_unit => '',
+            physical_quantity => 'temperature'
+        })
+    ),
+    '47 degrees in celcius' => test_zci(
+        '', structured_answer => make_answer({
+            raw_input => '47',
+            from_unit => 'degrees',
+            to_unit => '',
+            physical_quantity => 'temperature'
+        })
+    ),
 
      # natural language queries
     'unit converter' => test_zci(
