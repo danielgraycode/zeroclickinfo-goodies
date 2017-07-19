@@ -2267,6 +2267,10 @@ aliases:
   - bit per second
   - bits per second
   - bps
+  - bits ps
+  - b/ps
+  - bit/ps
+  - bits/ps
 type: data_transfer 
 unit: bitps 
 ---
@@ -2276,6 +2280,11 @@ aliases:
   - kilobit per second
   - kilobits per second
   - kbps
+  - kilobit ps
+  - kilobits ps
+  - kilobit/ps
+  - kilobits/ps
+  - kb/ps
 type: data_transfer 
 unit: kbitps 
 ---
@@ -2285,7 +2294,8 @@ aliases:
   - megabit per second
   - megabits per second
   - mbps
-  - Mbps
+  - mb/ps
+  - mb ps
 type: data_transfer 
 unit: mbitps 
 ---
@@ -2295,6 +2305,8 @@ aliases:
   - gigabit per second
   - gigabits per second
   - gbps
+  - gb/ps
+  - gb ps
 type: data_transfer 
 unit: gbitps
 ---
@@ -2304,6 +2316,12 @@ aliases:
   - terrabit per second
   - terrabits per second
   - tbps
+  - tb ps
+  - tb/ps
+  - tb per sec
+  - tb per second
+  - terrabit/ps 
+  - terrabits/ps 
 type: data_transfer 
 unit: tbitps 
 ---

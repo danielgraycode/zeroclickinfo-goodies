@@ -2541,7 +2541,7 @@ ddg_goodie_test(
     '450 degrees to celsius' => test_zci(
         '', structured_answer => make_answer({
             raw_input => '450',
-            from_unit => 'farenheight',
+            from_unit => 'fahrenheit',
             to_unit => 'celsius',
             physical_quantity => 'temperature'
         })

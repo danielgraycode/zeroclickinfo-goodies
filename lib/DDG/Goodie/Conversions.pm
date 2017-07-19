@@ -199,9 +199,6 @@ handle query => sub {
     my $question = $+{'question'} // "";
     my $connecting_word = $+{'connecting_word'} // "";
 
-    p($left_unit);
-    p($right_unit);
-
     my $factor = $left_num;
     my @matches = ($left_unit, $right_unit);
 
@@ -276,7 +273,6 @@ handle query => sub {
         'from_unit' => $matches[0],
         'to_unit' => $matches[1],
     });
-    p($result);
 
     return unless defined $result->{'from_unit'} && defined $result->{'type'};
 
@@ -332,6 +328,31 @@ sub convert {
     my @matches = get_matches(@inputs);
     return if scalar(@matches) < 1;
     return if $conversion->{'factor'} < 0 && !($matches[0]->{'can_be_negative'});
+
+    # Handles the ambigous handling of the word 'degrees' in temperature conversions
+    if(
+        $matches[0]->{'type'} eq 'angle' && $matches[1]->{'type'} eq 'temperature' ||
+        $matches[0]->{'type'} eq 'temperature' && $matches[1]->{'type'} eq 'angle' 
+    ) {
+        if($matches[0]->{'type'} eq 'angle' && $matches[1]->{'unit'} eq 'fahrenheit') {
+            $matches[0]->{'unit'} = 'celsius';        
+            $matches[0]->{'type'} = 'temperature';
+        }
+        elsif($matches[1]->{'type'} eq 'angle' && $matches[0]->{'unit'} eq 'fahrenheit') {
+            $matches[1]->{'unit'} = 'celsius';        
+            $matches[1]->{'type'} = 'temperature';
+        }
+
+        if($matches[0]->{'type'} eq 'angle' && $matches[1]->{'unit'} eq 'celsius') {
+            $matches[0]->{'unit'} = 'fahrenheit';
+            $matches[0]->{'type'} = 'temperature';
+        }
+        elsif($matches[1]->{'type'} eq 'angle' && $matches[0]->{'unit'} eq 'celsius') {
+            $matches[1]->{'unit'} = 'fahrenheit';
+            $matches[1]->{'type'} = 'temperature';
+        }
+        
+    }
 
     # Handles ounce (mass) / fl ounce (volume) ambiguity
     if(defined $matches[1]->{'unit'}) {
