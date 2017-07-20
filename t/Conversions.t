@@ -1559,7 +1559,7 @@ ddg_goodie_test(
     '155343.1234 gallons to hectolitres' => test_zci(
         '', structured_answer => make_answer({
             raw_input => '155343.1234',
-            from_unit => 'impgallon',
+            from_unit => 'usgallon',
             to_unit => 'hectolitre',
             physical_quantity => 'volume'
         })
@@ -1858,7 +1858,7 @@ ddg_goodie_test(
         '', structured_answer => make_answer({
             raw_input => '1',
             from_unit => 'litre',
-            to_unit => 'impgallon',
+            to_unit => 'usgallon',
             physical_quantity => 'volume'
         })
      ),
@@ -1945,7 +1945,7 @@ ddg_goodie_test(
     'liters per gallon' => test_zci(
         '', structured_answer => make_answer({
             raw_input => '1',
-            from_unit => 'impgallon',
+            from_unit => 'usgallon',
             to_unit => 'litre',
             physical_quantity => 'volume'
         })
@@ -1953,7 +1953,7 @@ ddg_goodie_test(
     'liters per 100 gallon' => test_zci(
         '', structured_answer => make_answer({
             raw_input => '100',
-            from_unit => 'impgallon',
+            from_unit => 'usgallon',
             to_unit => 'litre',
             physical_quantity => 'volume'
         })
@@ -1962,7 +1962,7 @@ ddg_goodie_test(
         '', structured_answer => make_answer({
             raw_input => '100',
             from_unit => 'litre',
-            to_unit => 'impgallon',
+            to_unit => 'usgallon',
             physical_quantity => 'volume'
         })
     ),
@@ -2124,15 +2124,15 @@ ddg_goodie_test(
     'tablespoon to teaspoon' => test_zci(
         '', structured_answer => make_answer({
             raw_input => '1',
-            from_unit => 'imptbsp',
-            to_unit => 'imptsp',
+            from_unit => 'ustbsp',
+            to_unit => 'ustsp',
             physical_quantity => 'volume'
         })
     ),
     '5 cups to us tablespoon' => test_zci(
         '', structured_answer => make_answer({
             raw_input => '5',
-            from_unit => 'impcup',
+            from_unit => 'uscup',
             to_unit => 'ustbsp',
             physical_quantity => 'volume'
         })
@@ -2141,7 +2141,7 @@ ddg_goodie_test(
     'how many ounces in a quart' => test_zci(
         '', structured_answer => make_answer({
             raw_input => '1',
-            from_unit => 'impquart',
+            from_unit => 'usquart',
             to_unit => 'impfluidounce',
             physical_quantity => 'volume'
         })
@@ -2149,7 +2149,7 @@ ddg_goodie_test(
     'ounces in a cup' => test_zci(
         '', structured_answer => make_answer({
             raw_input => '1',
-            from_unit => 'impcup',
+            from_unit => 'uscup',
             to_unit => 'impfluidounce',
             physical_quantity => 'volume'
         })
@@ -2255,7 +2255,7 @@ ddg_goodie_test(
     'fluid ounces to milliliters' => test_zci(
         '', structured_answer => make_answer({
             raw_input => '1',
-            from_unit => 'impfluidounce',
+            from_unit => 'usfluidounce',
             to_unit => 'millilitre',
             physical_quantity => 'volume'
         })
